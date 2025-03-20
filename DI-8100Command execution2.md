@@ -12,21 +12,21 @@ Firmware download address：[https://www.dlink.com.cn/techsupport/ProductInfo.as
 
 1、In the auth_asp function of the jhttpd file, the callback parameter is controllable, and when both usr and pwd are empty, it will be copied to v65 with sprintf resulting in stack overflow, which can result in denial of service or even command execution
 
+<img width="455" alt="image" src="https://github.com/user-attachments/assets/847c80c8-1cc7-436f-96a2-db73ecf6e55a" />
 
 
-![image-20250320232318721](/Users/fizzl/Library/Application Support/typora-user-images/image-20250320232318721.png)
 
 2、The url interface corresponding to the function is auth.asp, and it can be accessed without login (the page authorization logic needs to follow the jhttpd program initialization module for analysis), that is, attackers can exploit the vulnerability without authorization
 
 3、As shown in the figure, through simulation debugging in the virtual machine, it is found that the return address can be successfully overwritten and the jump can be controlled. Theoretically, the command execution effect can be achieved by constructing the rop chain.
 
-![image-20250320232432130](/Users/fizzl/Library/Application Support/typora-user-images/image-20250320232432130.png)
+<img width="372" alt="image" src="https://github.com/user-attachments/assets/12cb4ad5-fd07-4935-9312-222fe99ad384" />
 
 verify：
 
 Using the simulated FirmAE tool, tool address: https://github.com/pr0v3rbs/FirmAE
 
-![image-20250320232532558](/Users/fizzl/Library/Application Support/typora-user-images/image-20250320232532558.png)
+![image-20250320232532558](https://github.com/user-attachments/assets/3e46b857-9188-4297-9df2-b083c5532221)
 
 
 
